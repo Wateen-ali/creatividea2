@@ -1,0 +1,111 @@
+<style>
+    .quiz {
+        margin: 20px;
+    }
+
+    .question {
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="quiz">
+    <h2>Java programming 1</h2>
+    <div class="question">
+        <h3>Question 1:</h3>
+        <p>An IF-ELSE statement is also called ___.</p>
+        <ul>
+            <li>
+                <input type="radio" id="q1-option1" name="q1" value="option3">
+                <label for="q1-option1">Branching statement</label>
+            </li>
+            <li>
+                <input type="radio" id="q1-option2" name="q1" value="option2">
+                <label for="q1-option2">control statement</label>
+            </li>
+            <li>
+                <input type="radio" id="q1-option3" name="q1" value="option1">
+                <label for="q1-option3">All</label>
+            </li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <h3>Question 2:</h3>
+        <p>An IF or ELSE IF statement accepts ___ as input before branching.</p>
+        <ul>
+            <li>
+                <input type="radio" id="q2-option1" name="q2" value="option1">
+                <label for="q2-option1">Boolean</label>
+            </li>
+            <li>
+                <input type="radio" id="q2-option2" name="q2" value="option2">
+                <label for="q2-option2">Int</label>
+            </li>
+            <li>
+                <input type="radio" id="q2-option3" name="q2" value="option3">
+                <label for="q2-option3">Char</label>
+            </li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <h3>Question 3:</h3>
+        <p>Which loop construct is best suited for iterating over an array or a collection:</p>
+        <ul>
+            <li>
+                <input type="radio" id="q3-option1" name="q3" value="option2">
+                <label for="q3-option1">While loop</label>
+            </li>
+            <li>
+                <input type="radio" id="q3-option2" name="q3" value="option1">
+                <label for="q3-option2">For loop</label>
+            </li>
+            <li>
+                <input type="radio" id="q3-option3" name="q3" value="option3">
+                <label for="q3-option3">do while loop</label>
+            </li>
+        </ul>
+    </div>
+
+    <button id="submit-btn">Submit</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+    document.getElementById('submit-btn').addEventListener('click', function () {
+        var questions = document.getElementsByClassName('question');
+        var score = 0;
+        var totalQuestions = questions.length;
+
+        for (var i = 0; i < totalQuestions; i++) {
+            var question = questions[i];
+            var selectedOption = question.querySelector('input[type="radio"]:checked');
+
+            if (selectedOption) {
+                var selectedValue = selectedOption.value;
+
+                if (selectedValue === 'option1') {
+                    score++;
+                }
+            }
+        }
+
+        var resultElement = document.getElementById('result');
+        resultElement.textContent = 'Your score: ' + score + '/' + totalQuestions;
+    });
+</script>
