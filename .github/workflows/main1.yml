@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-
 jobs:
   zap-scan:
     runs-on: ubuntu-latest
@@ -24,3 +23,7 @@ jobs:
           allow_issue_writing: true
           issue_title: 'ZAP Scan Results'
           artifact_name: 'zap-scan-results'
+        env:
+          ZAP_AUTH_HEADER_VALUE: ${{ secrets.AUTH_HEADER_VALUE }}
+          ZAP_AUTH_HEADER: ${{ secrets.AUTH_HEADER }}
+          ZAP_AUTH_HEADER_SITE: ${{ secrets.AUTH_HEADER_SITE }}
