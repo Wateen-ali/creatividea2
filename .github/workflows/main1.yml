@@ -1,9 +1,6 @@
-on: [push]
-
 jobs:
-  zap_scan:
+  zap-scan:
     runs-on: ubuntu-latest
-    name: Scan the webapplication
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,3 +14,10 @@ jobs:
           target: 'https://creativeidea-site.webflow.io'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
+          allow_issue_writing: true
+          issue_title: 'ZAP Scan Results'
+          artifact_name: 'zap-scan-results'
+        env:
+          ZAP_AUTH_HEADER_VALUE: ${{ secrets.AUTH_HEADER_VALUE }}
+          ZAP_AUTH_HEADER: ${{ secrets.AUTH_HEADER }}
+          ZAP_AUTH_HEADER_SITE: ${{ secrets.AUTH_HEADER_SITE }}
