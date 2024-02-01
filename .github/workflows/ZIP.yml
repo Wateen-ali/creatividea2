@@ -3,12 +3,12 @@ name: OWASP ZAP Scan
 on: push
 
 jobs:
-  zap_scan:
+  my-job:
     runs-on: windows-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Install package with elevated privileges
+        run: |
+          powershell -Command "Start-Process cmd -Verb RunAs -ArgumentList '/c choco install package-name'"
 
       - name: Start OWASP ZAP
         run: |
